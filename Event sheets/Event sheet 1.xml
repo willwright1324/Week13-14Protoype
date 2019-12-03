@@ -1,0 +1,1086 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Event sheet 1</name>
+    <events>
+        <variable constant="0" name="pY" sid="528254057299583" static="0" type="number">0</variable>
+        <variable constant="0" name="pX" sid="603374737827780" static="0" type="number">0</variable>
+        <variable constant="0" name="mY" sid="770207471173980" static="0" type="number">0</variable>
+        <variable constant="0" name="mX" sid="265392207132301" static="0" type="number">0</variable>
+        <variable constant="0" name="throwCane" sid="517873970584186" static="0" type="number">0</variable>
+        <variable constant="0" name="doneBlock" sid="775379692531714" static="0" type="number">0</variable>
+        <variable constant="0" name="doneDuck" sid="303709769148298" static="0" type="number">0</variable>
+        <variable constant="1" name="PLAYER_SPEED" sid="185085923238498" static="0" type="number">200</variable>
+        <comment>Controls</comment>
+        <variable constant="0" name="doRange" sid="485877379066261" static="0" type="number">0</variable>
+        <variable constant="0" name="doMelee" sid="138832773113003" static="0" type="number">0</variable>
+        <variable constant="0" name="doBlock" sid="615658722321830" static="0" type="number">0</variable>
+        <variable constant="0" name="doJump" sid="683875010938458" static="0" type="number">0</variable>
+        <variable constant="0" name="doLeft" sid="716081360721670" static="0" type="number">0</variable>
+        <variable constant="0" name="doDuck" sid="681419412673837" static="0" type="number">0</variable>
+        <variable constant="0" name="doRight" sid="942813897865059" static="0" type="number">0</variable>
+        <variable constant="0" name="arrayFill" sid="870044008138435" static="0" type="number">0</variable>
+        <event-block sid="914599751379585">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="349054418812779" type="System" />
+            </conditions>
+            <actions>
+                <action behavior="Pin" id="0" name="Pin to object" sid="897252318914406" type="Cane">
+                    <param id="0" name="Pin to">Player</param>
+                    <param id="1" name="Mode">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>Initializes Controls</comment>
+        <event-block sid="148298276489340">
+            <conditions>
+                <condition id="-14" name="Compare variable" sid="911164120574322" type="System">
+                    <param id="0" name="Variable">arrayFill</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="556792656464922">
+                    <conditions>
+                        <condition id="-10" name="For" sid="638026241349619" type="System">
+                            <param id="0" name="Name">&quot;FillStart&quot;</param>
+                            <param id="1" name="Start index">0</param>
+                            <param id="2" name="End index">6</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="10" name="Insert" sid="402400402825888" type="Controls">
+                            <param id="0" name="Value">loopindex(&quot;FillStart&quot;) + 1</param>
+                            <param id="1" name="Index">loopindex(&quot;FillStart&quot;)</param>
+                            <param id="2" name="Axis">0</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="128163860448410">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="460804091655516" type="System">
+                                    <param id="0" name="First value">loopindex(&quot;FillStart&quot;)</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">6</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="497382157481265" type="System">
+                                    <param id="0" name="Variable">arrayFill</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <comment>Randomizes Controls</comment>
+        <event-block sid="686704309014603">
+            <conditions>
+                <condition id="-14" name="Compare variable" sid="136641934189426" type="System">
+                    <param id="0" name="Variable">arrayFill</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <variable constant="0" name="elem" sid="915447729251947" static="0" type="number">0</variable>
+                <event-block sid="907169203506103">
+                    <conditions>
+                        <condition id="-10" name="For" sid="864245358733567" type="System">
+                            <param id="0" name="Name">&quot;FillRand&quot;</param>
+                            <param id="1" name="Start index">0</param>
+                            <param id="2" name="End index">6</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <variable constant="0" name="swap" sid="992703126651446" static="0" type="number">0</variable>
+                        <event-block sid="254221576207427">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="902245639401257" type="System">
+                                    <param id="0" name="First value">loopindex(&quot;FillRand&quot;)</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">6</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="212744178653821" type="System">
+                                    <param id="0" name="Variable">arrayFill</param>
+                                    <param id="1" name="Value">2</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="711930161521178">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="590486509833083" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="430674232266656" type="System">
+                                    <param id="0" name="Variable">elem</param>
+                                    <param id="1" name="Value">round(random(loopindex(&quot;FillRand&quot;) + 1, 6))</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="670439418240674" type="System">
+                                    <param id="0" name="Variable">swap</param>
+                                    <param id="1" name="Value">Controls.At(elem)</param>
+                                </action>
+                                <action id="2" name="Set at X" sid="361019015596819" type="Controls">
+                                    <param id="0" name="X">elem</param>
+                                    <param id="1" name="Value">Controls.At(loopindex(&quot;FillRand&quot;))</param>
+                                </action>
+                                <action id="2" name="Set at X" sid="874135796161904" type="Controls">
+                                    <param id="0" name="X">loopindex(&quot;FillRand&quot;)</param>
+                                    <param id="1" name="Value">swap</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <comment>Sets Instructions</comment>
+        <event-block sid="450579042996031">
+            <conditions>
+                <condition id="-14" name="Compare variable" sid="899413882145854" type="System">
+                    <param id="0" name="Variable">arrayFill</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">2</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <variable constant="0" name="control" sid="619663050925299" static="0" type="number">0</variable>
+                <event-block sid="829650145606254">
+                    <conditions>
+                        <condition id="-10" name="For" sid="571858093517526" type="System">
+                            <param id="0" name="Name">&quot;F&quot;</param>
+                            <param id="1" name="Start index">0</param>
+                            <param id="2" name="End index">6</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="299188625770088" type="System">
+                            <param id="0" name="Variable">control</param>
+                            <param id="1" name="Value">Controls.IndexOf(loopindex(&quot;F&quot;) + 1)</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="888387776552226">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="756421159659307" type="System">
+                                    <param id="0" name="First value">loopindex(&quot;F&quot;)</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="1" name="Append text" sid="370918669374140" type="Text">
+                                    <param id="0" name="Text">&quot;Jump (W): &quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="339902881955415">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="781482283955481" type="System">
+                                    <param id="0" name="First value">loopindex(&quot;F&quot;)</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="1" name="Append text" sid="518975878923921" type="Text">
+                                    <param id="0" name="Text">&quot;Left (A): &quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="214344780774465">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="475111439683047" type="System">
+                                    <param id="0" name="First value">loopindex(&quot;F&quot;)</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">2</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="1" name="Append text" sid="646741492740514" type="Text">
+                                    <param id="0" name="Text">&quot;Duck (S): &quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="426238050224063">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="550841098465752" type="System">
+                                    <param id="0" name="First value">loopindex(&quot;F&quot;)</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">3</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="1" name="Append text" sid="230602435573627" type="Text">
+                                    <param id="0" name="Text">&quot;Right (D): &quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="390973951489396">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="381325794850516" type="System">
+                                    <param id="0" name="First value">loopindex(&quot;F&quot;)</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">4</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="1" name="Append text" sid="171848803124883" type="Text">
+                                    <param id="0" name="Text">&quot;Block (Space): &quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="549993456769058">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="241565133828233" type="System">
+                                    <param id="0" name="First value">loopindex(&quot;F&quot;)</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">5</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="1" name="Append text" sid="246239360021497" type="Text">
+                                    <param id="0" name="Text">&quot;Melee (Mouse1): &quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="504047582045215">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="673881307773126" type="System">
+                                    <param id="0" name="First value">loopindex(&quot;F&quot;)</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">6</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="1" name="Append text" sid="127670257451552" type="Text">
+                                    <param id="0" name="Text">&quot;Ranged (Mouse2): &quot;</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="927961296094888" type="System">
+                                    <param id="0" name="Variable">arrayFill</param>
+                                    <param id="1" name="Value">3</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="646837934229421">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="747160327627100" type="System">
+                                    <param id="0" name="Variable">control</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="1" name="Append text" sid="553385469907946" type="Text">
+                                    <param id="0" name="Text">&quot;W&quot; &amp; newline</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="357251446401787">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="414453775068625" type="System">
+                                    <param id="0" name="Variable">control</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="1" name="Append text" sid="989211865147365" type="Text">
+                                    <param id="0" name="Text">&quot;A&quot; &amp; newline</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="553110159984525">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="495573870771216" type="System">
+                                    <param id="0" name="Variable">control</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">2</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="1" name="Append text" sid="349214301217911" type="Text">
+                                    <param id="0" name="Text">&quot;S&quot; &amp; newline</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="373490067616396">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="248062599887682" type="System">
+                                    <param id="0" name="Variable">control</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">3</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="1" name="Append text" sid="230140147439408" type="Text">
+                                    <param id="0" name="Text">&quot;D&quot; &amp; newline</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="649315742888299">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="939399480810054" type="System">
+                                    <param id="0" name="Variable">control</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">4</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="1" name="Append text" sid="993162766256325" type="Text">
+                                    <param id="0" name="Text">&quot;Space&quot; &amp; newline</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="355566360076709">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="528173509574140" type="System">
+                                    <param id="0" name="Variable">control</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">5</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="1" name="Append text" sid="254127120862983" type="Text">
+                                    <param id="0" name="Text">&quot;Mouse1&quot; &amp; newline</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="974417435070071">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="169677752688142" type="System">
+                                    <param id="0" name="Variable">control</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">6</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="1" name="Append text" sid="369854461889801" type="Text">
+                                    <param id="0" name="Text">&quot;Mouse2&quot; &amp; newline</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <comment>Random Controls</comment>
+        <event-block sid="328081962726938">
+            <conditions>
+                <condition id="2" name="Key is down" sid="543873537585749" type="Keyboard">
+                    <param id="0" name="Key">87</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="293344657504728" type="Function">
+                    <param id="0" name="Name">&quot;SetAction&quot;</param>
+                    <param id="1" name="Parameter {n}">Controls.At(0)</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="889988090920032">
+            <conditions>
+                <condition id="-22" name="Else" sid="878690825129877" type="System" />
+                <condition id="-4" name="Trigger once while true" sid="987603583645250" type="System" />
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="798346854921374" type="Function">
+                    <param id="0" name="Name">&quot;SetAction&quot;</param>
+                    <param id="1" name="Parameter {n}">-Controls.At(0)</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="573141419360265">
+            <conditions>
+                <condition id="2" name="Key is down" sid="885436826038458" type="Keyboard">
+                    <param id="0" name="Key">65</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="997927542968277" type="Function">
+                    <param id="0" name="Name">&quot;SetAction&quot;</param>
+                    <param id="1" name="Parameter {n}">Controls.At(1)</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="257942240587281">
+            <conditions>
+                <condition id="-22" name="Else" sid="371782103639240" type="System" />
+                <condition id="-4" name="Trigger once while true" sid="937030579357928" type="System" />
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="450208816325031" type="Function">
+                    <param id="0" name="Name">&quot;SetAction&quot;</param>
+                    <param id="1" name="Parameter {n}">-Controls.At(1)</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="150145208699176">
+            <conditions>
+                <condition id="2" name="Key is down" sid="349300428367443" type="Keyboard">
+                    <param id="0" name="Key">83</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="365985124830465" type="Function">
+                    <param id="0" name="Name">&quot;SetAction&quot;</param>
+                    <param id="1" name="Parameter {n}">Controls.At(2)</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="597291109782908">
+            <conditions>
+                <condition id="-22" name="Else" sid="668109601984856" type="System" />
+                <condition id="-4" name="Trigger once while true" sid="287237980726253" type="System" />
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="491504042082047" type="Function">
+                    <param id="0" name="Name">&quot;SetAction&quot;</param>
+                    <param id="1" name="Parameter {n}">-Controls.At(2)</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="770044530123709">
+            <conditions>
+                <condition id="2" name="Key is down" sid="467281962693249" type="Keyboard">
+                    <param id="0" name="Key">68</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="355221725099421" type="Function">
+                    <param id="0" name="Name">&quot;SetAction&quot;</param>
+                    <param id="1" name="Parameter {n}">Controls.At(3)</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="910873649088420">
+            <conditions>
+                <condition id="-22" name="Else" sid="336109772459942" type="System" />
+                <condition id="-4" name="Trigger once while true" sid="947617293219739" type="System" />
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="329976455028906" type="Function">
+                    <param id="0" name="Name">&quot;SetAction&quot;</param>
+                    <param id="1" name="Parameter {n}">-Controls.At(3)</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="157894116429498">
+            <conditions>
+                <condition id="2" name="Key is down" sid="532493220455802" type="Keyboard">
+                    <param id="0" name="Key">32</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="722330345326525" type="Function">
+                    <param id="0" name="Name">&quot;SetAction&quot;</param>
+                    <param id="1" name="Parameter {n}">Controls.At(4)</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="876699126921991">
+            <conditions>
+                <condition id="-22" name="Else" sid="561561640919181" type="System" />
+                <condition id="-4" name="Trigger once while true" sid="592102226876715" type="System" />
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="848649276558947" type="Function">
+                    <param id="0" name="Name">&quot;SetAction&quot;</param>
+                    <param id="1" name="Parameter {n}">-Controls.At(4)</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="668937556807978">
+            <conditions>
+                <condition id="2" name="Mouse button is down" sid="439540743098948" type="Mouse">
+                    <param id="0" name="Mouse button">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="471095510067208" type="Function">
+                    <param id="0" name="Name">&quot;SetAction&quot;</param>
+                    <param id="1" name="Parameter {n}">Controls.At(5)</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="519084019363895">
+            <conditions>
+                <condition id="-22" name="Else" sid="700988726122171" type="System" />
+                <condition id="-4" name="Trigger once while true" sid="578998442859930" type="System" />
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="942522541282378" type="Function">
+                    <param id="0" name="Name">&quot;SetAction&quot;</param>
+                    <param id="1" name="Parameter {n}">-Controls.At(5)</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="430953230719547">
+            <conditions>
+                <condition id="2" name="Mouse button is down" sid="970804107571568" type="Mouse">
+                    <param id="0" name="Mouse button">2</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="105449021115841" type="Function">
+                    <param id="0" name="Name">&quot;SetAction&quot;</param>
+                    <param id="1" name="Parameter {n}">Controls.At(6)</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="406339342591988">
+            <conditions>
+                <condition id="-22" name="Else" sid="421600279343941" type="System" />
+                <condition id="-4" name="Trigger once while true" sid="375062452920763" type="System" />
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="779626874914117" type="Function">
+                    <param id="0" name="Name">&quot;SetAction&quot;</param>
+                    <param id="1" name="Parameter {n}">-Controls.At(6)</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>Sets correct control</comment>
+        <event-block sid="679785932006724">
+            <conditions>
+                <condition id="0" name="On function" sid="355063128890677" type="Function">
+                    <param id="0" name="Name">&quot;SetAction&quot;</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="927332230922727">
+                    <conditions>
+                        <condition id="1" name="Compare parameter" sid="488353881811073" type="Function">
+                            <param id="0" name="Index">0</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="650729013937430" type="System">
+                            <param id="0" name="Variable">doJump</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="732496267398051">
+                    <conditions>
+                        <condition id="1" name="Compare parameter" sid="755484896318947" type="Function">
+                            <param id="0" name="Index">0</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">2</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="599544559118376" type="System">
+                            <param id="0" name="Variable">doLeft</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="290126887192345">
+                    <conditions>
+                        <condition id="1" name="Compare parameter" sid="204537175114958" type="Function">
+                            <param id="0" name="Index">0</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">3</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="668143488635307" type="System">
+                            <param id="0" name="Variable">doDuck</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="582715001459109">
+                    <conditions>
+                        <condition id="1" name="Compare parameter" sid="140169178325028" type="Function">
+                            <param id="0" name="Index">0</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">4</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="651855075619528" type="System">
+                            <param id="0" name="Variable">doRight</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="816725300176496">
+                    <conditions>
+                        <condition id="1" name="Compare parameter" sid="438464003395507" type="Function">
+                            <param id="0" name="Index">0</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">5</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="718155410980211" type="System">
+                            <param id="0" name="Variable">doBlock</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="815362973853380">
+                    <conditions>
+                        <condition id="1" name="Compare parameter" sid="632934158361852" type="Function">
+                            <param id="0" name="Index">0</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">6</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="987966581888296" type="System">
+                            <param id="0" name="Variable">doMelee</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="828746882907797">
+                    <conditions>
+                        <condition id="1" name="Compare parameter" sid="617517498826909" type="Function">
+                            <param id="0" name="Index">0</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">7</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="484822911824346" type="System">
+                            <param id="0" name="Variable">doRange</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="861498726539632">
+                    <conditions>
+                        <condition id="1" name="Compare parameter" sid="994290665566872" type="Function">
+                            <param id="0" name="Index">0</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">-1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="473069256879219" type="System">
+                            <param id="0" name="Variable">doJump</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="338576108314639">
+                    <conditions>
+                        <condition id="1" name="Compare parameter" sid="526154723677463" type="Function">
+                            <param id="0" name="Index">0</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">-2</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="345220053351276" type="System">
+                            <param id="0" name="Variable">doLeft</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="598382690439724">
+                    <conditions>
+                        <condition id="1" name="Compare parameter" sid="867653743843398" type="Function">
+                            <param id="0" name="Index">0</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">-3</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="302910637854645" type="System">
+                            <param id="0" name="Variable">doDuck</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="260563073416086">
+                    <conditions>
+                        <condition id="1" name="Compare parameter" sid="926936545538644" type="Function">
+                            <param id="0" name="Index">0</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">-4</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="756655010629265" type="System">
+                            <param id="0" name="Variable">doRight</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="871907732825009">
+                    <conditions>
+                        <condition id="1" name="Compare parameter" sid="291108422111259" type="Function">
+                            <param id="0" name="Index">0</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">-5</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="611476853495634" type="System">
+                            <param id="0" name="Variable">doBlock</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="697114138581256">
+                    <conditions>
+                        <condition id="1" name="Compare parameter" sid="359773128570984" type="Function">
+                            <param id="0" name="Index">0</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">-6</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="525551065371143" type="System">
+                            <param id="0" name="Variable">doMelee</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="418080500872719">
+                    <conditions>
+                        <condition id="1" name="Compare parameter" sid="545485359545517" type="Function">
+                            <param id="0" name="Index">0</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">-7</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action disabled="1" id="-9" name="Set value" sid="823255286444548" type="System">
+                            <param id="0" name="Variable">doRange</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <comment>Player Abilities</comment>
+        <event-block sid="118532965127677">
+            <conditions>
+                <condition id="-14" name="Compare variable" sid="936144041167554" type="System">
+                    <param id="0" name="Variable">doJump</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="Platform" id="7" name="Simulate control" sid="794517578789472" type="Player">
+                    <param id="0" name="Control">2</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="584478519482669">
+            <conditions>
+                <condition id="-14" name="Compare variable" sid="495225290484705" type="System">
+                    <param id="0" name="Variable">doLeft</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="Platform" id="8" name="Set vector X" sid="742764581761904" type="Player">
+                    <param id="0" name="Vector X">-PLAYER_SPEED</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="458112286432493">
+            <conditions>
+                <condition id="-14" name="Compare variable" sid="890133459312891" type="System">
+                    <param id="0" name="Variable">doneDuck</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="850334841045811" type="System">
+                    <param id="0" name="Variable">doDuck</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+                <condition id="-4" name="Trigger once while true" sid="772452007093281" type="System" />
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="418004626340409" type="System">
+                    <param id="0" name="Variable">doneDuck</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="-7" name="Set size" sid="888425251592667" type="Player">
+                    <param id="0" name="Width">Player.Width</param>
+                    <param id="1" name="Height">Player.Height / 2</param>
+                </action>
+                <action id="-16" name="Wait" sid="997083332438498" type="System">
+                    <param id="0" name="Seconds">0.5</param>
+                </action>
+                <action id="-7" name="Set size" sid="815164244442537" type="Player">
+                    <param id="0" name="Width">Player.Width</param>
+                    <param id="1" name="Height">Player.Height * 2</param>
+                </action>
+                <action id="-16" name="Wait" sid="699645798408984" type="System">
+                    <param id="0" name="Seconds">0.5</param>
+                </action>
+                <action id="-9" name="Set value" sid="556725892824698" type="System">
+                    <param id="0" name="Variable">doneDuck</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="879018625652035">
+            <conditions>
+                <condition id="-14" name="Compare variable" sid="970745830518953" type="System">
+                    <param id="0" name="Variable">doRight</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="Platform" id="8" name="Set vector X" sid="135598306898832" type="Player">
+                    <param id="0" name="Vector X">PLAYER_SPEED</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="187040164964257">
+            <conditions>
+                <condition id="-14" name="Compare variable" sid="119193832713320" type="System">
+                    <param id="0" name="Variable">doneBlock</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="686333651866262" type="System">
+                    <param id="0" name="Variable">doBlock</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+                <condition id="-4" name="Trigger once while true" sid="132345907377561" type="System" />
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="219314647581906" type="System">
+                    <param id="0" name="Variable">doneBlock</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="0" name="Spawn another object" sid="223414595016601" type="Player">
+                    <param id="0" name="Object">Block</param>
+                    <param id="1" name="Layer">0</param>
+                    <param id="2" name="Image point">&quot;Block&quot;</param>
+                </action>
+                <action behavior="Pin" id="0" name="Pin to object" sid="497643422823730" type="Block">
+                    <param id="0" name="Pin to">Player</param>
+                    <param id="1" name="Mode">0</param>
+                </action>
+                <action id="-7" name="Set size" sid="380550589331228" type="Block">
+                    <param id="0" name="Width">Block.Width</param>
+                    <param id="1" name="Height">Player.Height</param>
+                </action>
+                <action id="-16" name="Wait" sid="861376208471284" type="System">
+                    <param id="0" name="Seconds">0.3</param>
+                </action>
+                <action id="-9" name="Destroy" sid="969328375608819" type="Block" />
+                <action id="-16" name="Wait" sid="269869436411941" type="System">
+                    <param id="0" name="Seconds">0.3</param>
+                </action>
+                <action id="-9" name="Set value" sid="270789422924503" type="System">
+                    <param id="0" name="Variable">doneBlock</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="785987219698714">
+            <conditions>
+                <condition id="-14" name="Compare variable" sid="107361762073999" type="System">
+                    <param id="0" name="Variable">doMelee</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="209838410122419" type="System">
+                    <param id="0" name="Variable">throwCane</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+                <condition id="-4" name="Trigger once while true" sid="694431006541937" type="System" />
+            </conditions>
+            <actions>
+                <action id="4" name="Set animation" sid="384383947122476" type="Cane">
+                    <param id="0" name="Animation">&quot;Hit&quot;</param>
+                    <param id="1" name="From">1</param>
+                </action>
+                <action id="-16" name="Wait" sid="402633063901405" type="System">
+                    <param id="0" name="Seconds">0.1</param>
+                </action>
+                <action id="4" name="Set animation" sid="158332744315421" type="Cane">
+                    <param id="0" name="Animation">&quot;Default&quot;</param>
+                    <param id="1" name="From">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="311461992195638">
+            <conditions>
+                <condition id="-14" name="Compare variable" sid="527506533737919" type="System">
+                    <param id="0" name="Variable">doRange</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+                <condition id="-4" name="Trigger once while true" sid="255066535720284" type="System" />
+            </conditions>
+            <actions>
+                <action id="-22" name="Set angle toward position" sid="856338168175887" type="Cane">
+                    <param id="0" name="X">Mouse.X</param>
+                    <param id="1" name="Y">Mouse.Y</param>
+                </action>
+                <action id="-9" name="Set value" sid="984263706555481" type="System">
+                    <param id="0" name="Variable">mX</param>
+                    <param id="1" name="Value">Mouse.X</param>
+                </action>
+                <action id="-9" name="Set value" sid="666748765532569" type="System">
+                    <param id="0" name="Variable">mY</param>
+                    <param id="1" name="Value">Mouse.Y</param>
+                </action>
+                <action id="-9" name="Set value" sid="271671591046094" type="System">
+                    <param id="0" name="Variable">pX</param>
+                    <param id="1" name="Value">Player.X</param>
+                </action>
+                <action id="-9" name="Set value" sid="722684912416585" type="System">
+                    <param id="0" name="Variable">pY</param>
+                    <param id="1" name="Value">Player.Y</param>
+                </action>
+                <action behavior="Pin" id="1" name="Unpin" sid="708082122087469" type="Cane" />
+                <action id="-9" name="Set value" sid="429461790770825" type="System">
+                    <param id="0" name="Variable">throwCane</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="860919103390212">
+            <conditions>
+                <condition id="-14" name="Compare variable" sid="351539559429133" type="System">
+                    <param id="0" name="Variable">throwCane</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+                <condition id="-8" name="Compare two values" sid="191160190368126" type="System">
+                    <param id="0" name="First value">distance(Cane.X, Cane.Y, mX, mY)</param>
+                    <param id="1" name="Comparison">4</param>
+                    <param id="2" name="Second value">1</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-17" name="Move forward" sid="633776466246487" type="Cane">
+                    <param id="0" name="Distance">2</param>
+                </action>
+                <action id="4" name="Set animation" sid="936980280052975" type="Cane">
+                    <param id="0" name="Animation">&quot;Hit&quot;</param>
+                    <param id="1" name="From">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="137320244147339">
+            <conditions>
+                <condition id="-22" name="Else" sid="784179777497491" type="System" />
+                <condition id="-14" name="Compare variable" sid="574452272319468" type="System">
+                    <param id="0" name="Variable">throwCane</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+                <condition id="-4" name="Trigger once while true" sid="597122362165015" type="System" />
+            </conditions>
+            <actions>
+                <action id="-22" name="Set angle toward position" sid="251046128808478" type="Cane">
+                    <param id="0" name="X">pX</param>
+                    <param id="1" name="Y">pY</param>
+                </action>
+                <action id="-9" name="Set value" sid="378773058035316" type="System">
+                    <param id="0" name="Variable">throwCane</param>
+                    <param id="1" name="Value">2</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="396620774703081">
+            <conditions>
+                <condition id="-14" name="Compare variable" sid="576962258082452" type="System">
+                    <param id="0" name="Variable">throwCane</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">2</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-17" name="Move forward" sid="881771442779323" type="Cane">
+                    <param id="0" name="Distance">2</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="876850082449279">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="499031913250517" type="Cane">
+                    <param id="0" name="Object">Ground</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="656950543307764" type="System">
+                    <param id="0" name="Variable">throwCane</param>
+                    <param id="1" name="Value">3</param>
+                </action>
+                <action id="4" name="Set animation" sid="349686712646500" type="Cane">
+                    <param id="0" name="Animation">&quot;Default&quot;</param>
+                    <param id="1" name="From">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block any="1" sid="666077165496956">
+            <conditions>
+                <condition id="-14" name="Compare variable" sid="581315847499479" type="System">
+                    <param id="0" name="Variable">throwCane</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">2</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="413753927229794" type="System">
+                    <param id="0" name="Variable">throwCane</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">3</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="118640470504743">
+                    <conditions>
+                        <condition id="1" name="Is overlapping another object" sid="422642172283289" type="Player">
+                            <param id="0" name="Object">Cane</param>
+                        </condition>
+                        <condition id="-4" name="Trigger once while true" sid="747915847609811" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="781641425651427" type="Cane" />
+                        <action id="0" name="Spawn another object" sid="660285169412461" type="Player">
+                            <param id="0" name="Object">Cane</param>
+                            <param id="1" name="Layer">0</param>
+                            <param id="2" name="Image point">&quot;Cane&quot;</param>
+                        </action>
+                        <action behavior="Pin" id="0" name="Pin to object" sid="789595439997015" type="Cane">
+                            <param id="0" name="Pin to">Player</param>
+                            <param id="1" name="Mode">0</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="866342482840145" type="System">
+                            <param id="0" name="Variable">throwCane</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="642250419076791" type="System">
+                            <param id="0" name="Variable">doRange</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+    </events>
+</c2eventsheet>
